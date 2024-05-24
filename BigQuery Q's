@@ -1,0 +1,11 @@
+1. How many partitions can create in BQ for one table.
+4000 partitions can create in BQ
+
+2. What is Partitioning, Clustering & Sharding in BQ.
+Partitioning is like dividing table into smaller partitions for better performance. same as PARTITION BY
+Clustering is sorting the data based on one ot more columns in table, same as ORDER BY
+Sharding is breaking if data into smaller pieces.
+
+3. Can we restore a deleted datadet in BQ?
+No, we cannot restore, we need to create new dataset with same name &
+we have to restore tables & views that were in the deleted dataset.
