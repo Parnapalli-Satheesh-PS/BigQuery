@@ -3,7 +3,7 @@
 
 2. What is Partitioning, Clustering & Sharding in BQ.
 Partitioning is like dividing table into smaller partitions for better performance. same as PARTITION BY
-Clustering is sorting the data based on one or more columns in table, same as ORDER BY
+Clustering is sorting the data based on one or more columns in table, so based on date, country, status will cluster. same as ORDER BY
 Sharding is breaking if data into smaller pieces.
 
 3. Can we restore a deleted datadet in BQ?
