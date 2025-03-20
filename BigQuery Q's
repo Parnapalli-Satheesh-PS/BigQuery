@@ -12,4 +12,4 @@ we have to restore tables & views that were in the deleted dataset.
 
 
 4. Can we restore deleted tables in bq
-yes, we can by using time travel (upto 7 days)
+no, we can restore the wntire data by using time travel (upto 7 days)
