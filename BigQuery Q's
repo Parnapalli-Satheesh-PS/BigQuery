@@ -13,3 +13,7 @@ we have to restore tables & views that were in the deleted dataset.
 
 4. Can we restore deleted tables in bq
 no, we can restore the wntire data by using time travel (upto 7 days)
+
+5. setting partition expiration in bq 
+ALTER TABLE `project_id.dataset_id.table_name`
+SET OPTIONS(partition_expiration_days=30);
