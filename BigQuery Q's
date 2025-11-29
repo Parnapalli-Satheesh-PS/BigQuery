@@ -1,5 +1,9 @@
-1. How many partitions can create in BQ for one table.
-4000 partitions can create in BQ
+1. Max How many partitions can create in BQ for one table.
+4000 partitions can create in BQ, now increased to 10000
+
+2. Max how many columns we can create clustering in bigquery
+In BigQuery, you can specify up to 4 clustering columns for a table.
+can use clustering on a standalone table (non-partitioned) or combine clustering with partitioning. In a partitioned table, clustering is maintained within each partition.
 
 2. What is Partitioning, Clustering & Sharding in BQ.
 Partitioning is like dividing table into smaller partitions for better performance. same as PARTITION BY
@@ -9,7 +13,6 @@ Sharding is breaking if data into smaller pieces.
 3. Can we restore a deleted datadet in BQ?
 No, we cannot restore, we need to create new dataset with same name &
 we have to restore tables & views that were in the deleted dataset.
-
 
 4. Can we restore deleted tables in bq
 no, we can restore the wntire data by using time travel (upto 7 days)
