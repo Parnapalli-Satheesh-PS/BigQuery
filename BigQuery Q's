@@ -52,3 +52,8 @@ One central Fact table connected directly to multiple Dimension tables. Dimensio
 Snowflake schema
 Extension of Star Schema. Dimension tables are normalized into multiple related tables.
 
+10. Explain SCD types.
+Type 0 - Fixed – No changes allowed - No History - DOB
+Type 1 - Overwrite the old value - No History - Mobile number
+Type 2 - Keep history with multiple rows - Full history - Address change
+Type 3 - Keep previous value in extra column - Partial history - Last job title
