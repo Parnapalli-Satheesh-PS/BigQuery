@@ -5,18 +5,50 @@
 In BigQuery, you can specify up to 4 clustering columns for a table.
 can use clustering on a standalone table (non-partitioned) or combine clustering with partitioning. In a partitioned table, clustering is maintained within each partition.
 
-2. What is Partitioning, Clustering & Sharding in BQ.
-Partitioning is like dividing table into smaller partitions for better performance. same as PARTITION BY
-Clustering is sorting the data based on one or more columns in table, so based on date, country, status will cluster. same as ORDER BY
-Sharding is breaking if data into smaller pieces.
+3. What is Partitioning, Clustering & Sharding in BQ.
+Partitioning is like dividing table into smaller partitions for better performance. same as PARTITION BY. Partitioning is per table, not per column.
+- DATE/`TIMESTAMP` column (time-unit column-based)
+- INTEGER range (range partitioning)
+- INGESTION_TIME (automatic partitioning) 
+Clustering is like organizing data inside each partition or table based on one or more frequently filtered columns, using sorted blocks.
+Sharding is breaking if data into smaller pieces. manually splitting a table into multiple separate tables (not recommended)
 
-3. Can we restore a deleted datadet in BQ?
+4. Can we restore a deleted datadet in BQ?
 No, we cannot restore, we need to create new dataset with same name &
 we have to restore tables & views that were in the deleted dataset.
 
-4. Can we restore deleted tables in bq
+5. Can we restore deleted tables in bq
 no, we can restore the wntire data by using time travel (upto 7 days)
 
-5. setting partition expiration in bq 
+6. setting partition expiration in bq 
 ALTER TABLE `project_id.dataset_id.table_name`
 SET OPTIONS(partition_expiration_days=30);
+
+7. Views in BQ
+Standard View (Regular View)
+A logical SQL query stored in BigQuery. Does not store data physically
+
+Materialized View
+Physically stores precomputed and cached results. Automatically refreshes when underlying data changes.
+Improves performance and reduces cost for repeated queries. Only supports simple queries (no joins or subqueries).
+
+Authorized View
+A specially permissioned view used to restrict data access. Allows users to query data without direct access to base tables. Useful for data masking, sensitive data control.
+
+GRANT SELECT
+ON TABLE sensitive_dataset.employee_data
+TO "serviceAccount:project-id@vi…ernet.gserviceaccount.com";
+
+8. How do you implement incremental load?
+MERGE target AS T
+USING source AS S
+ON T.id = S.id
+WHEN MATCHED THEN UPDATE SET ...
+WHEN NOT MATCHED THEN INSERT (...)
+
+9. Expain star and snowflake schema
+Star Schema
+One central Fact table connected directly to multiple Dimension tables. Dimension tables are denormalized.
+Snowflake schema
+Extension of Star Schema. Dimension tables are normalized into multiple related tables.
+
